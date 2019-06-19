@@ -6,5 +6,6 @@ namespace UnMango.Extensions.Json
 {
     public class JsonOptions
     {
+        //private readonly Dictionary<>
     }
 }
