@@ -30,7 +30,7 @@ steps:
   inputs:
     packageType: 'sdk'
 #    version: $(DotnetVersion)
-    version: 3.x
+    version: '3.x'
     includePreviewVersions: true
 
 - powershell: ./build.ps1 -ci
