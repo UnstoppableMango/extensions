@@ -3,10 +3,14 @@ trigger:
   batch: true
   branches:
     include:
+    - '*'
+
+pr:
+  autoCancel: false
+  branches:
+    include:
     - master
     - release/*
-
-pool: 'KGBuildAgent'
 
 variables:
 - name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
