@@ -1,0 +1,51 @@
+<Project>
+  <Import Project="version.props" />
+
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+
+    <Authors>Kum &amp; Go DCX Team</Authors>
+    <Product>DCX Extension Libraries</Product>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageProjectUrl>https://dev.azure.com/KrauseGroup/Digital%20Customer%20Experience/_git/DCX.Extensions</PackageProjectUrl>
+    <RepositoryUrl>https://dev.azure.com/KrauseGroup/Digital%20Customer%20Experience/_git/DCX.Extensions.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <DebugType>portable</DebugType>
+    <IsPackable>false</IsPackable>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  
+  <!-- Warnings and errors - From: https://github.com/aspnet/AspNetCore/blob/d7ae0e5d9adf253e57ea351ce5af83bb1ab84a77/Directory.Build.props#L44 -->
+  <PropertyGroup>
+    <TreatWarningsAsErrors Condition=" '$(CI)' == 'true' ">true</TreatWarningsAsErrors>
+    <!-- Don't make missing XML docs a fatal build error, but still surface so we have visibility into undocumented APIs. -->
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);CS1591</WarningsNotAsErrors>
+    <!-- xUnit1004 = warns about skipped tests. Make this a non-fatal build warning. -->
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);xUnit1004</WarningsNotAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <PlatformName Condition=" '$(PlatformName)' == '' ">$(Platform)</PlatformName>
+    <TargetOsName Condition=" '$(TargetOsName)' == '' AND $([MSBuild]::IsOSPlatform('Windows'))">win</TargetOsName>
+    <TargetOsName Condition=" '$(TargetOsName)' == '' AND $([MSBuild]::IsOSPlatform('Linux'))">linux</TargetOsName>
+    <TargetArchitecture Condition="'$(TargetArchitecture)' == ''">x64</TargetArchitecture>
+    <TargetRuntimeIdentifier>$(TargetOsName)-$(TargetArchitecture)</TargetRuntimeIdentifier>
+
+    <!-- Make error messages clickable in VS Code's console -->
+    <GenerateFullPaths Condition="'$(VSCODE_CWD)' != '' OR '$(TERM_PROGRAM)' == 'vscode'">true</GenerateFullPaths>
+  </PropertyGroup>
+
+  <!-- This will enable a deterministic build. Disable until we can utilize that feature -->
+  <!--<PropertyGroup>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>-->
+</Project>
