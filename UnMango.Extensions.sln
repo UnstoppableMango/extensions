@@ -49,6 +49,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Json", "Json", "{86BC945C-D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnMango.Extensions.Json.Newtonsoft", "src\UnMango.Extensions.Json.Newtonsoft\UnMango.Extensions.Json.Newtonsoft.csproj", "{A6EEEEDC-1D25-435D-84C6-1B3911C19A4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnMango.Extensions.Json.System.Text", "src\UnMango.Extensions.Json.System.Text\UnMango.Extensions.Json.System.Text.csproj", "{3A19D47C-2C76-4E29-99B2-15AE33B4B545}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{A6EEEEDC-1D25-435D-84C6-1B3911C19A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6EEEEDC-1D25-435D-84C6-1B3911C19A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6EEEEDC-1D25-435D-84C6-1B3911C19A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A19D47C-2C76-4E29-99B2-15AE33B4B545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A19D47C-2C76-4E29-99B2-15AE33B4B545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A19D47C-2C76-4E29-99B2-15AE33B4B545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A19D47C-2C76-4E29-99B2-15AE33B4B545}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{8DEB3FDA-AF0A-426B-B9F3-3120F41165A1} = {86BC945C-D721-4B1B-983A-0F6B588AC96C}
 		{86BC945C-D721-4B1B-983A-0F6B588AC96C} = {F8E4892F-C63E-418A-ADF7-BEF32B9C74F4}
 		{A6EEEEDC-1D25-435D-84C6-1B3911C19A4E} = {86BC945C-D721-4B1B-983A-0F6B588AC96C}
+		{3A19D47C-2C76-4E29-99B2-15AE33B4B545} = {86BC945C-D721-4B1B-983A-0F6B588AC96C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94F81182-81A6-4B23-BB79-926C8623A328}

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.6.0-preview6.19303.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UnMango.Extensions.Json.Abstractions\UnMango.Extensions.Json.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
