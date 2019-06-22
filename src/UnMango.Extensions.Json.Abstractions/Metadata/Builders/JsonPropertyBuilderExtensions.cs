@@ -11,7 +11,7 @@ namespace UnMango.Extensions.Json.Metadata.Builders
             if (builder == null) throw new ArgumentNullException(nameof(builder));
             if (configure == null) throw new ArgumentNullException(nameof(configure));
 
-            builder.Builder.Configure(configure);
+            builder.TypeBuilder.Configure(configure);
 
             return builder;
         }

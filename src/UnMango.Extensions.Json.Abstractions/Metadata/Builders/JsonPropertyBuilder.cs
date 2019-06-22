@@ -6,12 +6,12 @@ namespace UnMango.Extensions.Json.Metadata.Builders
     {
         public JsonPropertyBuilder(JsonTypeBuilder builder, PropertyInfo property)
         {
-            Builder = builder;
+            TypeBuilder = builder;
             Property = property;
         }
 
-        internal JsonTypeBuilder Builder { get; }
+        public JsonTypeBuilder TypeBuilder { get; }
 
-        internal PropertyInfo Property { get; }
+        public PropertyInfo Property { get; }
     }
 }

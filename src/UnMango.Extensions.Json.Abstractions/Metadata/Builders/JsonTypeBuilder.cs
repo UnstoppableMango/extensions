@@ -24,6 +24,6 @@ namespace UnMango.Extensions.Json.Metadata.Builders
             return configuration;
         }
 
-        internal void Configure(Action<JsonConfiguration> configure) => _configures.Add(configure);
+        public void Configure(Action<JsonConfiguration> configure) => _configures.Add(configure);
     }
 }

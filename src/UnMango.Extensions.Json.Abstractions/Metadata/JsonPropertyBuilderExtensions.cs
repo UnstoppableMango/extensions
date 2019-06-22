@@ -22,7 +22,7 @@ namespace UnMango.Extensions.Json.Metadata
             if (builder == null) throw new ArgumentNullException(nameof(builder));
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name));
 
-            return builder.Configure(config => config.AddPropertyMapping(builder.Property, name));
+            return builder.Configure(config => config.PropertyMappings[builder.Property] = name);
         }
     }
 }
