@@ -19,7 +19,7 @@ variables:
   value: $[counter('buildnumber', 1)]
 
 jobs:
-- template: /build/job.yml
+- template: /build/templates/job.yml
   parameters:
     name: $(AgentOs)
     enablePublishBuildAssets: true
