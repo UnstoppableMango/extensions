@@ -19,50 +19,171 @@ variables:
   value: $[counter('buildnumber', 1)]
 
 jobs:
-- template: /build/templates/job.yml
+- template: /build/templates/build.yml
   parameters:
-    name: $(AgentOs)
-    enablePublishBuildAssets: true
-    pool: $(Pool)
+    agentOs: Windows_NT
+    pool:
+      name: Windows
     strategy:
       matrix:
-        Windows:
-          AgentOs: Windows_NT
-          Pool: Windows
+        ${{ if in(variables['Build.Reason'], 'PullRequest') }}:
+          Build_Debug_x86:
+            BuildConfiguration: Debug
+            _BuildArchitecture: x86
+            _DropSuffix: ''
+          Build_DropSuffix_Release_x64:
+            BuildConfiguration: Release
+            _BuildArchitecture: x64
+            _DropSuffix: true
+        ${{ if notin(variables['Build.Reason'], 'PullRequest') }}:
+          Build_Release_x86:
+            BuildConfiguration: Release
+            _BuildArchitecture: x86
+            _DropSuffix: ''
+        # Always run builds
+        Build_Release_x64:
           BuildConfiguration: Release
-        Linux:
-          AgentOs: Linux
-          Pool: Linux
+          _BuildArchitecture: x64
+          _DropSuffix: ''
+          
+- template: /build/templates/build.yml
+  parameters:
+    agentOs: Linux
+    pool:
+      name: Linux
+    strategy:
+      matrix:
+        ${{ if in(variables['Build.Reason'], 'PullRequest') }}:
+          Build_Ubuntu_14_04_Release_x64:
+            BuildConfiguration: Release
+            _DockerParameter: '--docker ubuntu.14.04'
+            _LinuxPortable: ''
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Ubuntu_16_04_Debug_x64:
+            BuildConfiguration: Debug
+            _DockerParameter: '--docker ubuntu.16.04'
+            _LinuxPortable: ''
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Ubuntu_18_04_Debug_x64:
+            BuildConfiguration: Debug
+            _DockerParameter: '--docker ubuntu.18.04'
+            _LinuxPortable: '--linux-portable'
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Fedora_27_Debug_x64:
+            BuildConfiguration: Debug
+            _DockerParameter: '--docker fedora.27'
+            _LinuxPortable: '--linux-portable'
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Fedora_28_Debug_x64:
+            BuildConfiguration: Debug
+            _DockerParameter: '--docker fedora.28'
+            _LinuxPortable: '--linux-portable'
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Fedora_29_Debug_x64:
+            BuildConfiguration: Debug
+            _DockerParameter: '--docker fedora.29'
+            _LinuxPortable: '--linux-portable'
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_OpenSUSE_42_3_Debug_x64:
+            BuildConfiguration: Debug
+            _DockerParameter: '--docker opensuse.42.3'
+            _LinuxPortable: '--linux-portable'
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_CentOS_7_1_Debug_x64:
+            BuildConfiguration: Debug
+            _DockerParameter: '--docker centos'
+            _LinuxPortable: ''
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Debian_Jessie_Debug_x64:
+            BuildConfiguration: Debug
+            _DockerParameter: '--docker debian'
+            _LinuxPortable: ''
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Rhel_7_2_Release_x64:
+            BuildConfiguration: Release
+            _DockerParameter: '--docker rhel'
+            _LinuxPortable: ''
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Rhel_6_Debug_x64:
+            BuildConfiguration: Debug
+            _DockerParameter: '--docker rhel.6'
+            _LinuxPortable: ''
+            _RuntimeIdentifier: '--runtime-id rhel.6-x64'
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Linux_musl_Debug_x64:
+            BuildConfiguration: Debug
+            _DockerParameter: '--docker alpine.3.6'
+            _LinuxPortable: ''
+            _RuntimeIdentifier: '--runtime-id linux-musl-x64'
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_LinuxPortable_NoSuffix_Release_x64:
+            BuildConfiguration: Release
+            _DockerParameter: ''
+            _LinuxPortable: '--linux-portable'
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: true
+        ${{ if notin(variables['Build.Reason'], 'PullRequest') }}:
+          Build_Rhel_6_Release_x64:
+            BuildConfiguration: Release
+            _DockerParameter: '--docker rhel.6'
+            _LinuxPortable: ''
+            _RuntimeIdentifier: '--runtime-id rhel.6-x64'
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Linux_musl_Release_x64:
+            BuildConfiguration: Release
+            _DockerParameter: '--docker alpine.3.6'
+            _LinuxPortable: ''
+            _RuntimeIdentifier: '--runtime-id linux-musl-x64'
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+          Build_Linux_Portable_Deb_Release_x64:
+            BuildConfiguration: Release
+            _DockerParameter: '--docker ubuntu.16.04'
+            _LinuxPortable: '--linux-portable'
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+            # Do not publish zips and tarballs. The linux-x64 binaries are
+            # already published by Build_LinuxPortable_Release_x64
+            _AdditionalBuildParameters: '/p:PublishBinariesAndBadge=false'
+          Build_Linux_Portable_Rpm_Release_x64:
+            BuildConfiguration: Release
+            _DockerParameter: '--docker rhel'
+            _LinuxPortable: '--linux-portable'
+            _RuntimeIdentifier: ''
+            _BuildArchitecture: 'x64'
+            _DropSuffix: ''
+            # Do not publish zips and tarballs. The linux-x64 binaries are
+            # already published by Build_LinuxPortable_Release_x64
+            _AdditionalBuildParameters: '/p:PublishBinariesAndBadge=false'
+        Build_LinuxPortable_Release_x64:
           BuildConfiguration: Release
-
-    workspace:
-      clean: outputs
-    
-    steps:
-#    - powershell: echo "##vso[task.setvariable variable=DotnetVersion] $(((Get-Content "global.json" -Raw) | ConvertFrom-Json).sdk.version)"
-#      displayName: 'Set .NET Core version from global.json'
-    
-    - task: UseDotNet@2
-      displayName: 'Install .NET Core sdk'
-      inputs:
-        packageType: sdk
-#        version: $(DotnetVersion)
-        version: 3.x
-        includePreviewVersions: true
-    
-    - powershell: ./build.ps1 -ci --Configuration $(BuildConfiguration)
-      displayName: Invoke build.ps1
-    
-    - task: PublishTestResults@2
-      displayName: Upload test results
-      condition: always()
-      continueOnError: true
-      inputs:
-        testRunner: vstest
-        testResultsFiles: '**/*.trx'
-    
-    - task: PublishBuildArtifacts@1
-      displayName: Publish artifacts
-      inputs:
-        pathtoPublish: 'artifacts/'
-        artifactName: 'Packages'
+          _DockerParameter: ''
+          _LinuxPortable: '--linux-portable'
+          _RuntimeIdentifier: ''
+          _BuildArchitecture: 'x64'
+          _DropSuffix: ''        

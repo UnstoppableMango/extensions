@@ -83,18 +83,8 @@ phases:
       condition: not(succeeded())
 
     - ${{ if and(eq(parameters.enablePublishBuildAssets, true), notin(variables['Build.Reason'], 'PullRequest')) }}:
-      - task: CopyFiles@2
-        displayName: Gather Asset Manifests
-        inputs:
-          SourceFolder: '$(Build.SourcesDirectory)/artifacts/log/$(_BuildConfig)/AssetManifest'
-          TargetFolder: '$(Build.StagingDirectory)/AssetManifests'
-        continueOnError: ${{ parameters.continueOnError }}
-        condition: and(succeeded(), eq(variables['_PublishBuildAssetManifest'], 'true'))
       - task: PublishBuildArtifacts@1
-        displayName: Push Asset Manifests
+        displayName: Publish artifacts
         inputs:
-          PathtoPublish: '$(Build.StagingDirectory)/AssetManifests'
-          PublishLocation: Container
-          ArtifactName: AssetManifests
-        continueOnError: ${{ parameters.continueOnError }}
-        condition: and(succeeded(), eq(variables['_PublishBuildAssetManifest'], 'true'))
+          pathtoPublish: 'artifacts/'
+          artifactName: 'Packages'
