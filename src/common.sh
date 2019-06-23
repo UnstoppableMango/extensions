@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec() {
+execute() {
   echo "\e[90m>>> $@";
 
   errorActionPreference="Continue";
