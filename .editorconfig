@@ -5,6 +5,9 @@ insert_final_newline = true
 [*.yml]
 indent_size = 2
 
+[*.sh]
+indent_size = 2
+
 [*.{xml,props,targets}]
 indent_size = 2
 
