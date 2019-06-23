@@ -1,7 +1,7 @@
 #!/bin/bash
 
 exec() {
-  echo ">>> $@";
+  echo "\e[90m>>> $@";
 
   errorActionPreference="Continue";
 
@@ -10,6 +10,7 @@ exec() {
   
   errorActionPreference="Stop";
   if [[ $result != 0 ]]; then
+    echo "Failed with exit code $result"
     exit $result;
   fi
 }
