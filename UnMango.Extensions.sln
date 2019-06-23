@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F8E4892F-C63E-418A-ADF7-BEF32B9C74F4}"
 	ProjectSection(SolutionItems) = preProject
 		src\common.psm1 = src\common.psm1
+		src\common.sh = src\common.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{EDF974E6-4158-488E-8A9D-79AADCF4F694}"
@@ -40,6 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{62B05196-8EA8-4E4C-AC68-B790345296F6}"
 	ProjectSection(SolutionItems) = preProject
+		build\templates\build.yml = build\templates\build.yml
 		build\templates\job.yml = build\templates\job.yml
 	EndProjectSection
 EndProject
