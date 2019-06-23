@@ -41,7 +41,7 @@ phases:
 
     - ${{ if eq(parameters.agentOs, 'Windows_NT') }}:
       - script: build.cmd
-                  -test -pack -publish -ci
+                  -ci
                   -Configuration $(_BuildConfig)
                   -Architecture $(_BuildArchitecture)
                   $(_BuildArgs)
@@ -52,7 +52,7 @@ phases:
 
     - ${{ if eq(parameters.agentOs, 'Linux') }}:
       - script: ./build.sh
-                  --test --pack --publish --ci
+                  --ci
                   --noprettyprint
                   --configuration $(_BuildConfig)
                   $(_DockerParameter)
@@ -66,7 +66,7 @@ phases:
 
     - ${{ if or(eq(parameters.agentOs, 'Darwin'), eq(parameters.agentOs, 'FreeBSD')) }}:
       - script: ./build.sh
-                  --test --pack --publish --ci
+                  --ci
                   --noprettyprint
                   --configuration $(_BuildConfig)
                   $(_BuildArgs)
