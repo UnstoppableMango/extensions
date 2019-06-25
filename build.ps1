@@ -5,8 +5,8 @@ param(
     $Configuration = $null,
     [switch]
     $ci,
-    [switch]
-    $Architecture,
+    [ValidateSet('x86', 'x64', 'Arm')]
+    $Architecture = $null,
     [switch]
     $sign,
     [Parameter(ValueFromRemainingArguments = $true)]
@@ -30,8 +30,14 @@ if (!$Configuration) {
     $Configuration = if ($ci) { 'Release' } else { 'Debug' }
 }
 
+if (!$Architecture) {
+    $Architecture = 'x64'
+}
+
+$MSBuildArgs += '/p:Architecture=' + $Architecture
+
 if ($ci) {
-    $MSBuildArgs += '-p:CI=true'
+    $MSBuildArgs += '/p:CI=true'
 }
 
 $isPr = ($env:BUILD_REASON -eq 'PullRequest')
