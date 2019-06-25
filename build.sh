@@ -61,7 +61,7 @@ fi
 
 artifacts="$REPOROOT/artifacts/"
 
-rm -r $artifacts
+rm -rf $artifacts
 execute dotnet msbuild /t:UpdateCiSettings "${args[@]}"
 execute dotnet build --configuration $Configuration "${args[@]}"
 execute dotnet pack --no-restore --no-build --configuration $Configuration -o $artifacts "${args[@]}"
