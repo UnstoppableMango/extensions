@@ -6,6 +6,8 @@ param(
     [switch]
     $ci,
     [switch]
+    $Architecture,
+    [switch]
     $sign,
     [Parameter(ValueFromRemainingArguments = $true)]
     [string[]]$MSBuildArgs
