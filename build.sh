@@ -12,72 +12,94 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 REPOROOT="$DIR"
 
 args=( )
-Architecture=
-Configuration=
+
+restore=false
+build=false
+rebuild=false
+test=false
+integration_test=false
+performance_test=false
+pack=false
+publish=false
+sign=false
+public=false
+ci=false
+
+warn_as_error=true
+node_reuse=true
+binary_log=false
+pipelines_log=false
+
+projects=''
+configuration='Debug'
+prepare_machine=false
+verbosity='minimal'
+
+properties=''
 
 while [[ $# > 0 ]]; do
   opt="$(echo "${1/#--/-}" | awk '{print tolower($0)}')"
   case "$opt" in
-    -help|-h)
+    --help|-h)
       usage
       exit 0
       ;;
-    -configuration|-c)
+    --configuration|-c)
       configuration=$2
       shift
       ;;
-    -verbosity|-v)
+    --verbosity|-v)
       verbosity=$2
       shift
       ;;
-    -binarylog|-bl)
+    --binarylog|-bl)
       binary_log=true
       ;;
-    -pipelineslog|-pl)
+    --pipelineslog|-pl)
       pipelines_log=true
       ;;
-    -restore|-r)
+    --restore|-r)
       restore=true
       ;;
-    -build|-b)
+    --build|-b)
       build=true
       ;;
-    -rebuild)
+    --rebuild)
       rebuild=true
       ;;
-    -pack)
+    --pack)
       pack=true
       ;;
-    -test|-t)
+    --test|-t)
       test=true
       ;;
-    -integrationtest)
+    --integrationtest)
       integration_test=true
       ;;
-    -performancetest)
+    --performancetest)
       performance_test=true
       ;;
-    -sign)
+    --sign)
       sign=true
       ;;
-    -publish)
+    --publish)
       publish=true
       ;;
-    -preparemachine)
+    --preparemachine)
       prepare_machine=true
       ;;
-    -projects)
+    --projects)
       projects=$2
       shift
       ;;
-    -ci)
+    --ci)
       ci=true
       ;;
-    -warnaserror)
+    --warnaserror)
       warn_as_error=$2
       shift
       ;;
-    -nodereuse)
+    --nodereuse)
       node_reuse=$2
       shift
       ;;
@@ -99,7 +121,7 @@ if [[ "$ci" == true ]]; then
   args+=("/p:CI=true");
 fi
 
-if [[ -z "$Configuration" ]]; then
+if [[ -z "$configuration" ]]; then
   if [[ "$ci" == true ]]; then
     Configuration="Release";
   else
@@ -113,7 +135,7 @@ artifacts="$REPOROOT/artifacts/"
 
 rm -rf ${artifacts}
 execute dotnet msbuild /t:UpdateCiSettings "${args[@]}"
-execute dotnet build --configuration ${Configuration} "${args[@]}"
-execute dotnet pack --no-restore --no-build --configuration ${Configuration} -o ${artifacts} "${args[@]}"
+execute dotnet build --configuration ${configuration} "${args[@]}"
+execute dotnet pack --no-restore --no-build --configuration ${configuration} -o ${artifacts} "${args[@]}"
 
 echo "\e[35mDone"
