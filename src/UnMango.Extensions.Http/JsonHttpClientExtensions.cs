@@ -25,6 +25,8 @@ namespace UnMango.Extensions.Http
             JsonSerializerOptions options = default,
             CancellationToken cancellationToken = default)
         {
+            if (requestUri == null) throw new ArgumentNullException(nameof(requestUri));
+
             using var request = new HttpRequestMessage(HttpMethod.Post, requestUri);
 
             return SendAsJsonAsync(client, request, value, options, cancellationToken);
@@ -46,6 +48,8 @@ namespace UnMango.Extensions.Http
             JsonSerializerOptions options = default,
             CancellationToken cancellationToken = default)
         {
+            if (requestUri == null) throw new ArgumentNullException(nameof(requestUri));
+
             using var request = new HttpRequestMessage(HttpMethod.Post, requestUri);
 
             return SendAsJsonAsync(client, request, value, options, cancellationToken);
@@ -67,6 +71,8 @@ namespace UnMango.Extensions.Http
             JsonSerializerOptions options = default,
             CancellationToken cancellationToken = default)
         {
+            if (requestUri == null) throw new ArgumentNullException(nameof(requestUri));
+
             using var request = new HttpRequestMessage(HttpMethod.Put, requestUri);
 
             return SendAsJsonAsync(client, request, value, options, cancellationToken);
@@ -88,6 +94,8 @@ namespace UnMango.Extensions.Http
             JsonSerializerOptions options = default,
             CancellationToken cancellationToken = default)
         {
+            if (requestUri == null) throw new ArgumentNullException(nameof(requestUri));
+
             using var request = new HttpRequestMessage(HttpMethod.Put, requestUri);
 
             return SendAsJsonAsync(client, request, value, options, cancellationToken);
