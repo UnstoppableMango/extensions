@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace UnMango.Extensions.Http
 {
-    public static class HttpContentExtensions
+    public static class JsonHttpContentExtensions
     {
         public static async Task<T> ReadAsJsonAsync<T>(
             this HttpContent content,
