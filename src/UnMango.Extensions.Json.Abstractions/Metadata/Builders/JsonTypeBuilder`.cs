@@ -23,5 +23,7 @@ namespace UnMango.Extensions.Json.Metadata.Builders
 
             return new JsonPropertyBuilder<TProp>(this, property);
         }
+
+        protected override JsonMetadata NewMetadata() => new JsonMetadata(typeof(T));
     }
 }

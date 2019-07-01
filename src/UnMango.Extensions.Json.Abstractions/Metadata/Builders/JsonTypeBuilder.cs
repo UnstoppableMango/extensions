@@ -5,25 +5,31 @@ namespace UnMango.Extensions.Json.Metadata.Builders
 {
     public abstract class JsonTypeBuilder
     {
-        private readonly ICollection<Action<JsonConfiguration>> _configures =
-            new List<Action<JsonConfiguration>>();
+        private readonly ICollection<Action<JsonMetadata>> _configures =
+            new List<Action<JsonMetadata>>();
 
         /// <summary>
         /// Builds the json configuration based on the applied configurations.
         /// </summary>
         /// <returns>The final json configuraion.</returns>
-        public JsonConfiguration Build()
+        public JsonMetadata Build()
         {
-            var configuration = new JsonConfiguration();
+            var metadata = NewMetadata();
 
             foreach (var configure in _configures)
             {
-                configure(configuration);
+                configure(metadata);
             }
 
-            return configuration;
+            return metadata;
         }
 
-        public void Configure(Action<JsonConfiguration> configure) => _configures.Add(configure);
+        /// <summary>
+        /// Adds an action used to configure the <see cref="JsonMetadata"/> for this builder.
+        /// </summary>
+        /// <param name="configure">The action configuring the metadata.</param>
+        public void Configure(Action<JsonMetadata> configure) => _configures.Add(configure);
+
+        protected abstract JsonMetadata NewMetadata();
     }
 }
