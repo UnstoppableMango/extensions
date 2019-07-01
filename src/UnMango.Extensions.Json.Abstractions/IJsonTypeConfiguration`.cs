@@ -10,7 +10,7 @@ namespace UnMango.Extensions.Json
         where T : class
     {
         /// <summary>
-        /// Configures a builder for json properties of <typeparamref name="T"/>.
+        /// Configures a builder for json metadata of <typeparamref name="T"/>.
         /// </summary>
         /// <param name="builder">The builder to be configured.</param>
         void Configure(JsonTypeBuilder<T> builder);

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace UnMango.Extensions.Json.Metadata.Builders
 {
+    /// <summary>
+    /// Base type for defining json metadata for a <see cref="Type"/>.
+    /// </summary>
     public abstract class JsonTypeBuilder
     {
         private readonly ICollection<Action<JsonMetadata>> _configures =
