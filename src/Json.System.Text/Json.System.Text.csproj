@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>preview</LangVersion>
+    <AssemblyName>UnMango.Extensions.Json.System.Text</AssemblyName>
+    <RootNamespace>UnMango.Extensions.Json.System.Text</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>UnMango.Extensions.Json</RootNamespace>
+    <AssemblyName>UnMango.Extensions.Json.Abstractions</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>UnMango.Extensions.Json.Newtonsoft</AssemblyName>
+    <RootNamespace>UnMango.Extensions.Json.Newtonsoft</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
