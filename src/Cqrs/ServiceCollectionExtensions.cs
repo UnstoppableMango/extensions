@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using KG.DCX.Extensions.Cqrs;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -6,8 +7,8 @@ namespace Microsoft.Extensions.DependencyInjection
     internal static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddDispatchers(
-            this IServiceCollection services,
-            Func<ServiceFactory> serviceFactory)
+            [NotNull] this IServiceCollection services,
+            [NotNull] Func<ServiceFactory> serviceFactory)
         {
             if (serviceFactory == null)
             {
@@ -18,8 +19,8 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         public static IServiceCollection AddDispatchers(
-            this IServiceCollection services,
-            Func<IServiceProvider, ServiceFactory> serviceFactory)
+            [NotNull] this IServiceCollection services,
+            [NotNull] Func<IServiceProvider, ServiceFactory> serviceFactory)
         {
             if (services == null)
             {
