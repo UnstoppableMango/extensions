@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using JetBrains.Annotations;
 
 namespace UnMango.Extensions.Json.Metadata
 {
@@ -13,9 +14,10 @@ namespace UnMango.Extensions.Json.Metadata
         /// Initializes a new instance of a <see cref="JsonMetadata"/> to describe type <paramref name="type"/>.
         /// </summary>
         /// <param name="type">The <see cref="Type"/> this metadata will describe.</param>
-        public JsonMetadata(Type type)
+        internal JsonMetadata([NotNull] Type type)
         {
-            Type = type;
+            Type = type ?? throw new ArgumentNullException(nameof(type));
+            PropertyMappings = new Dictionary<PropertyInfo, string>();
         }
 
         /// <summary>

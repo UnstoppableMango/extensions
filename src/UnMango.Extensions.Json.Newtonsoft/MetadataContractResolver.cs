@@ -9,14 +9,14 @@ namespace UnMango.Extensions.Json.Newtonsoft
     public class MetadataContractResolver : DefaultContractResolver
     {
         private readonly IDictionary<Type, JsonMetadata> _metadata;
-        private Type _objectType;
+        private Type? _objectType;
 
         public MetadataContractResolver(IEnumerable<JsonMetadata> metadata)
         {
             _metadata = metadata.ToDictionary(x => x.Type, x => x);
         }
 
-        public string GetPropertyName(string propertyName)
+        public string? GetPropertyName(string propertyName)
         {
             if (_objectType == null) return null;
 

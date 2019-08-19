@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace UnMango.Extensions.Http
             this HttpClient client,
             string requestUri,
             T value,
-            JsonSerializerOptions serializerOptions = default,
+            JsonSerializerOptions? serializerOptions = default,
             CancellationToken cancellationToken = default)
         {
             if (requestUri == null) throw new ArgumentNullException(nameof(requestUri));
@@ -83,7 +84,7 @@ namespace UnMango.Extensions.Http
             this HttpClient client,
             Uri requestUri,
             T value,
-            JsonSerializerOptions serializerOptions = default,
+            JsonSerializerOptions? serializerOptions = default,
             CancellationToken cancellationToken = default)
         {
             if (requestUri == null) throw new ArgumentNullException(nameof(requestUri));
@@ -125,7 +126,7 @@ namespace UnMango.Extensions.Http
             this HttpClient client,
             string requestUri,
             T value,
-            JsonSerializerOptions serializerOptions = default,
+            JsonSerializerOptions? serializerOptions = default,
             CancellationToken cancellationToken = default)
         {
             if (requestUri == null) throw new ArgumentNullException(nameof(requestUri));
@@ -167,7 +168,7 @@ namespace UnMango.Extensions.Http
             this HttpClient client,
             Uri requestUri,
             T value,
-            JsonSerializerOptions serializerOptions = default,
+            JsonSerializerOptions? serializerOptions = default,
             CancellationToken cancellationToken = default)
         {
             if (requestUri == null) throw new ArgumentNullException(nameof(requestUri));
@@ -209,7 +210,7 @@ namespace UnMango.Extensions.Http
             this HttpClient client,
             HttpRequestMessage request,
             T value,
-            JsonSerializerOptions serializerOptions = default,
+            JsonSerializerOptions? serializerOptions = default,
             CancellationToken cancellationToken = default)
         {
             if (client == null) throw new ArgumentNullException(nameof(client));
@@ -219,7 +220,7 @@ namespace UnMango.Extensions.Http
             using var stream = new MemoryStream();
             request.Content = new StreamContent(stream);
 
-            await JsonSerializer.WriteAsync(value, stream, serializerOptions, cancellationToken).ConfigureAwait(false);
+            await JsonSerializer.SerializeAsync(stream, value, serializerOptions, cancellationToken).ConfigureAwait(false);
 
             return await client.SendAsync(request, cancellationToken).ConfigureAwait(false);
         }

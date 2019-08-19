@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using UnMango.Extensions.Json.Metadata.Builders;
 
 namespace UnMango.Extensions.Json.Metadata
@@ -17,7 +18,9 @@ namespace UnMango.Extensions.Json.Metadata
         /// <remarks>
         /// The last call to this method takes priority.
         /// </remarks>
-        public static JsonPropertyBuilder<T> HasName<T>(this JsonPropertyBuilder<T> builder, string name)
+        public static JsonPropertyBuilder<T> HasName<T>(
+            [NotNull] this JsonPropertyBuilder<T> builder,
+            [NotNull] string name)
         {
             if (builder == null) throw new ArgumentNullException(nameof(builder));
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name));

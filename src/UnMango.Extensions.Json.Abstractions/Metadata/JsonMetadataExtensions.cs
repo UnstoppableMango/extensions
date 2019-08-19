@@ -16,7 +16,7 @@ namespace UnMango.Extensions.Json.Metadata
         /// <param name="propertyName">The name of the property for which a mapping should be retrieved.</param>
         /// <param name="stringComparison">The <see cref="StringComparison"/> to use to retrieve the mapping.</param>
         /// <returns>The mapped property name. <see langword="null"/> if no mapping exists.</returns>
-        public static string GetPropertyName(
+        public static string? GetPropertyName(
             this JsonMetadata metadata,
             string propertyName,
             StringComparison stringComparison = StringComparison.OrdinalIgnoreCase)

@@ -46,7 +46,7 @@ namespace UnMango.Extensions.Json.Internal
             return propertyInfo;
         }
 
-        private static PropertyInfo MatchSimplePropertyAccess(
+        private static PropertyInfo? MatchSimplePropertyAccess(
             this Expression parameterExpression, Expression propertyAccessExpression)
         {
             var propertyInfos = MatchPropertyAccess(parameterExpression, propertyAccessExpression);
@@ -54,12 +54,12 @@ namespace UnMango.Extensions.Json.Internal
             return propertyInfos?.Count == 1 ? propertyInfos[0] : null;
         }
 
-        private static IReadOnlyList<PropertyInfo> MatchPropertyAccess(
+        private static IReadOnlyList<PropertyInfo>? MatchPropertyAccess(
             this Expression parameterExpression, Expression propertyAccessExpression)
         {
             var propertyInfos = new List<PropertyInfo>();
 
-            MemberExpression memberExpression;
+            MemberExpression? memberExpression;
 
             do
             {
@@ -79,7 +79,7 @@ namespace UnMango.Extensions.Json.Internal
             return propertyInfos;
         }
 
-        private static Expression RemoveTypeAs([CanBeNull] this Expression expression)
+        private static Expression? RemoveTypeAs([CanBeNull] this Expression? expression)
         {
             while (expression?.NodeType == ExpressionType.TypeAs)
             {
@@ -89,7 +89,7 @@ namespace UnMango.Extensions.Json.Internal
             return expression;
         }
 
-        private static Expression RemoveConvert([CanBeNull] this Expression expression)
+        private static Expression? RemoveConvert([CanBeNull] this Expression? expression)
         {
             while (expression != null
                    && (expression.NodeType == ExpressionType.Convert

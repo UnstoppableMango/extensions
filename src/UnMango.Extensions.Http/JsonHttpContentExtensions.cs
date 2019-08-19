@@ -1,7 +1,9 @@
-﻿using System.Net.Http;
-using System.Text.Json.Serialization;
+﻿using System;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace UnMango.Extensions.Http
 {
@@ -33,13 +35,18 @@ namespace UnMango.Extensions.Http
         /// <param name="cancellationToken">The cancellation token for the asynchronous operation.</param>
         /// <returns>The <see cref="HttpContent"/> deserialized as a <typeparamref name="T"/>.</returns>
         public static async Task<T> ReadAsJsonAsync<T>(
-            this HttpContent content,
-            JsonSerializerOptions options = default,
+            [NotNull] this HttpContent content,
+            JsonSerializerOptions? options = default,
             CancellationToken cancellationToken = default)
         {
+            if (content == null)
+            {
+                throw new ArgumentNullException(nameof(content));
+            }
+
             using var stream = await content.ReadAsStreamAsync().ConfigureAwait(false);
 
-            return await JsonSerializer.ReadAsync<T>(stream, options, cancellationToken).ConfigureAwait(false);
+            return await JsonSerializer.DeserializeAsync<T>(stream, options, cancellationToken).ConfigureAwait(false);
         }
     }
 }
