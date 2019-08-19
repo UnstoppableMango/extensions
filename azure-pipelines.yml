@@ -22,15 +22,11 @@ workspace:
   clean: outputs
 
 steps:
-#- powershell: echo "##vso[task.setvariable variable=DotnetVersion] $(((Get-Content "global.json" -Raw) | ConvertFrom-Json).sdk.version)"
-#  displayName: 'Set .NET Core version from global.json'
-
-- task: DotNetCoreInstaller@0
+- task: UseDotNet@2
   displayName: 'Install .NET Core'
   inputs:
-    packageType: 'sdk'
-#    version: $(DotnetVersion)
-    version: '3.x'
+    packageType: sdk
+    useGlobalJson: true
     includePreviewVersions: true
 
 - powershell: ./build.ps1 -ci
