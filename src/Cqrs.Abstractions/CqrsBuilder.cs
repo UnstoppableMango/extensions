@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using JetBrains.Annotations;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace KG.DCX.Extensions.Cqrs
 {
@@ -9,9 +11,9 @@ namespace KG.DCX.Extensions.Cqrs
     {
         internal const ServiceLifetime DEFAULT_HANDLER_LIFETIME = ServiceLifetime.Scoped;
 
-        internal CqrsBuilder(IServiceCollection services)
+        internal CqrsBuilder([NotNull] IServiceCollection services)
         {
-            Services = services;
+            Services = services ?? throw new ArgumentNullException(nameof(services));
         }
 
         /// <summary>

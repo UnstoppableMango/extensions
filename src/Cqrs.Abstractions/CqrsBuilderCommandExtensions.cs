@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using JetBrains.Annotations;
 using KG.DCX.Extensions.Cqrs;
 
 // ReSharper disable once CheckNamespace
@@ -94,8 +95,14 @@ namespace Microsoft.Extensions.DependencyInjection
             return AddCommandHandlerCore(builder, handlerType, handlerLifetime);
         }
 
-        private static CqrsBuilder AddCommandHandlerCore(CqrsBuilder builder, Type handlerType, ServiceLifetime handlerLifetime)
+        private static CqrsBuilder AddCommandHandlerCore(
+            [NotNull] CqrsBuilder builder,
+            [NotNull] Type handlerType,
+            ServiceLifetime handlerLifetime)
         {
+            if (builder == null) throw new ArgumentNullException(nameof(builder));
+            if (handlerType == null) throw new ArgumentNullException(nameof(handlerType));
+
             return builder.AddHandlerCore(GetCommandHandlerServiceType, handlerType, handlerLifetime);
         }
 
