@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace KG.DCX.Extensions.Cqrs
 {
@@ -9,14 +10,19 @@ namespace KG.DCX.Extensions.Cqrs
     {
         private readonly ServiceFactory _serviceFactory;
 
-        public CommandDispatcher(ServiceFactory serviceFactory)
+        public CommandDispatcher([NotNull] ServiceFactory serviceFactory)
         {
-            _serviceFactory = serviceFactory;
+            _serviceFactory = serviceFactory ?? throw new ArgumentNullException(nameof(serviceFactory));
         }
 
-        public Task DispatchAsync<T>(T request, CancellationToken cancellationToken = default)
+        public Task DispatchAsync<T>([NotNull] T request, CancellationToken cancellationToken = default)
             where T : ICommand
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
+
             var handler = _serviceFactory.GetRequiredService<ICommandHandler<T>>();
 
             return handler.HandleAsync(request, cancellationToken);
@@ -24,6 +30,11 @@ namespace KG.DCX.Extensions.Cqrs
 
         public Task<T> DispatchAsync<T>(ICommand<T> request, CancellationToken cancellationToken = default)
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
+
             var handlerType = GetHandlerType(request.GetType(), typeof(T));
             var handler = _serviceFactory(handlerType);
 

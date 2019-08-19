@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using KG.DCX.Extensions.Cqrs;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -14,7 +15,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="builder">The builder to configure.</param>
         /// <returns>The builder so calls can be chained.</returns>
-        public static CqrsBuilder UseDispatchers(this CqrsBuilder builder)
+        public static CqrsBuilder UseDispatchers([NotNull] this CqrsBuilder builder)
         {
             if (builder == null)
             {
@@ -32,7 +33,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="builder">The builder to configure.</param>
         /// <returns>The builder so calls can be chained.</returns>
-        public static CqrsBuilder UseDispatchers(this CqrsBuilder builder, Func<Type, object> serviceFactory)
+        public static CqrsBuilder UseDispatchers(
+            [NotNull] this CqrsBuilder builder,
+            [NotNull] Func<Type, object> serviceFactory)
         {
             if (builder == null)
             {
@@ -55,7 +58,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="builder">The builder to configure.</param>
         /// <returns>The builder so calls can be chained.</returns>
-        public static CqrsBuilder UseDispatchers(this CqrsBuilder builder, Func<IServiceProvider, Func<Type, object>> serviceFactory)
+        public static CqrsBuilder UseDispatchers(
+            [NotNull] this CqrsBuilder builder,
+            [NotNull] Func<IServiceProvider, Func<Type, object>> serviceFactory)
         {
             if (builder == null)
             {

@@ -6,6 +6,11 @@ namespace KG.DCX.Extensions.Cqrs
     {
         public static T GetService<T>(this ServiceFactory serviceFactory)
         {
+            if (serviceFactory == null)
+            {
+                throw new ArgumentNullException(nameof(serviceFactory));
+            }
+
             return (T)serviceFactory(typeof(T));
         }
 
