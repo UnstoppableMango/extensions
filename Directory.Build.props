@@ -8,18 +8,19 @@
   <PropertyGroup>
     <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
 
-    <Authors>Kum &amp; Go DCX Team</Authors>
-    <Product>DCX Extension Libraries</Product>
+    <Authors>UnstoppableMango</Authors>
+    <Product>UnMango Extensions</Product>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageProjectUrl>https://dev.azure.com/KrauseGroup/Digital%20Customer%20Experience/_git/DCX.Extensions</PackageProjectUrl>
-    <RepositoryUrl>https://dev.azure.com/KrauseGroup/Digital%20Customer%20Experience/_git/DCX.Extensions.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/unmango/extensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/unmango/extensions.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <DebugType>portable</DebugType>
     <IsPackable>false</IsPackable>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>true</IncludeSource>
     <NoPackageAnalysis>true</NoPackageAnalysis>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   
   <!-- Warnings and errors - From: https://github.com/aspnet/AspNetCore/blob/d7ae0e5d9adf253e57ea351ce5af83bb1ab84a77/Directory.Build.props#L44 -->
