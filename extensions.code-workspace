@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "src\\Cqrs"
+		},
+		{
+			"path": "src\\Repository"
 		}
 	]
 }
