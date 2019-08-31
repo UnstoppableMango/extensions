@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 
-namespace KG.Data.EntityFramework
+namespace UnMango.Extensions.Repository.EntityFramework
 {
     /// <summary>
     ///     The repository is an implementation of the repository pattern for <typeparamref name="TEntity"/>

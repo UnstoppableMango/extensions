@@ -2,7 +2,7 @@
 using System.Linq;
 using JetBrains.Annotations;
 
-namespace KG.Data
+namespace UnMango.Extensions.Repository
 {
     /// <summary>
     /// Utility class for <see cref="IRepository"/>s.
@@ -75,7 +75,7 @@ namespace KG.Data
         /// </summary>
         /// <param name="type">The repository type to get the entity type of.</param>
         /// <returns>The repository's entity type, or null.</returns>
-        public static Type GetEntityType([NotNull] Type type)
+        public static Type? GetEntityType([NotNull] Type type)
         {
             Check.NotNull(type, nameof(type));
 

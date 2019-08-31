@@ -2,7 +2,7 @@
 using System.Linq;
 using JetBrains.Annotations;
 
-namespace KG.Data
+namespace UnMango.Extensions.Repository
 {
     public static class RepositoryExtensions
     {
@@ -11,7 +11,7 @@ namespace KG.Data
         /// </summary>
         /// <param name="repository">The <see cref="IRepository"/> to get the entity type of.</param>
         /// <returns>The underlying entity <see cref="Type"/>.</returns>
-        public static Type EntityType([NotNull] this IRepository repository)
+        public static Type? EntityType([NotNull] this IRepository repository)
             => repository
                 .GetType()
                 .GetInterfaces()

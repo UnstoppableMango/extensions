@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KG.Data
+namespace UnMango.Extensions.Repository
 {
     internal static class StringExtensions
     {

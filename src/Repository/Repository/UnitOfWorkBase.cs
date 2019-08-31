@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 
-namespace KG.Data
+namespace UnMango.Extensions.Repository
 {
     /// <summary>
     ///     A unit of work represents a single transaction against a data source and can be used
@@ -14,12 +14,12 @@ namespace KG.Data
     /// </summary>
     public abstract class UnitOfWorkBase : IUnitOfWork
     {
+        private bool _configured;
+
         /// <summary>
         ///     Repositories associated with this unit of work's scope
         /// </summary>
         protected readonly ICollection<IRepository> Repositories;
-
-        private bool _configured;
 
         /// <summary>
         ///     Initializes a new instance of <see cref="UnitOfWorkBase"/> with no repositories.
@@ -87,7 +87,7 @@ namespace KG.Data
         /// </summary>
         /// <typeparam name="TEntity"> Entity type of the repository to retrieve. </typeparam>
         /// <returns> Repository for <typeparamref name="TEntity"/> </returns>
-        protected internal IRepository<TEntity> Repository<TEntity>()
+        protected internal IRepository<TEntity>? Repository<TEntity>()
             where TEntity : class
             => (IRepository<TEntity>)Repository(typeof(TEntity));
 
@@ -97,7 +97,7 @@ namespace KG.Data
         /// </summary>
         /// <param name="entityType"> Entity type of the repository to retrieve. </param>
         /// <returns> Repository for <paramref name="entityType"/> </returns>
-        protected internal IRepository Repository(Type entityType)
+        protected internal IRepository? Repository(Type entityType)
         {
             InternalConfigure();
 

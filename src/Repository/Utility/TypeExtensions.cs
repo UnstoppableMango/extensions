@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KG.Data
+namespace UnMango.Extensions.Repository
 {
     /// <summary>
     /// Extension methods for <see cref="Type"/>.

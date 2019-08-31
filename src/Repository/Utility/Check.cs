@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics;
 
-namespace KG.Data
+namespace UnMango.Extensions.Repository
 {
     [DebuggerStepThrough]
     internal static class Check

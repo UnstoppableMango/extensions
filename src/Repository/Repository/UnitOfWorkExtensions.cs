@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KG.Data
+namespace UnMango.Extensions.Repository
 {
     /// <summary>
     /// Extension methods for <see cref="IUnitOfWork"/>.
@@ -20,7 +20,7 @@ namespace KG.Data
         /// Thrown when <paramref name="unitOfWork"/> does not implement <see cref="UnitOfWorkBase"/>.
         /// </exception>
         [Obsolete("Use the method from the providers package")]
-        public static IRepository<TEntity> Entities<TEntity>(this IUnitOfWork unitOfWork)
+        public static IRepository<TEntity>? Entities<TEntity>(this IUnitOfWork unitOfWork)
             where TEntity : class
             => Check(unitOfWork).Repository<TEntity>();
 
@@ -28,6 +28,7 @@ namespace KG.Data
         {
             if (!(unitOfWork is UnitOfWorkBase unitOfWorkBase))
                 throw new InvalidOperationException(INVALID_UOW_MESSAGE);
+
             return unitOfWorkBase;
         }
     }

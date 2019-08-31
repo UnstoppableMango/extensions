@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KG.Data
+namespace UnMango.Extensions.Repository
 {
     /// <inheritdoc />
     /// <summary>

@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 
-namespace KG.Data
+namespace UnMango.Extensions.Repository
 {
     /// <summary>
     ///     An implementation of the unit of work pattern.
