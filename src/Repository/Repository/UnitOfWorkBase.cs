@@ -89,7 +89,7 @@ namespace UnMango.Extensions.Repository
         /// <returns> Repository for <typeparamref name="TEntity"/> </returns>
         protected internal IRepository<TEntity>? Repository<TEntity>()
             where TEntity : class
-            => (IRepository<TEntity>)Repository(typeof(TEntity));
+            => (IRepository<TEntity>?)Repository(typeof(TEntity));
 
         /// <summary>
         ///     Service locator (anti)pattern to retrieve the repository for <paramref name="entityType"/>.

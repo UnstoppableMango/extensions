@@ -23,7 +23,11 @@ namespace UnMango.Extensions.Repository
         [ContractAnnotation("value:null => halt")]
         public static string NotEmpty(string value, [InvokerParameterName] [NotNull] string parameterName)
         {
+#if NETCOREAPP3_0 || NETSTANDARD2_0
             Exception? e = null;
+#else
+            Exception e = null;
+#endif
 
             if (value is null)
             {
@@ -34,7 +38,11 @@ namespace UnMango.Extensions.Repository
                 e = new ArgumentException($"{parameterName} is an empty string");
             }
 
+#if NETCOREAPP3_0 || NETSTANDARD2_0
             if (e == null) return value!;
+#else
+            if (e == null) return value;
+#endif
 
             NotEmpty(parameterName, nameof(parameterName));
 
