@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace KG.Data.EntityFrameworkCore.Internal
+namespace UnMango.Extensions.Repository.EntityFrameworkCore.Internal
 {
     internal interface IInternalRepository<TEntity> : IRepository<TEntity>
         where TEntity : class

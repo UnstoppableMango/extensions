@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 
-namespace KG.Data.EntityFrameworkCore.Internal
+namespace UnMango.Extensions.Repository.EntityFrameworkCore.Internal
 {
     internal class InternalRepository<TEntity> : InternalDbSet<TEntity>, IInternalRepository<TEntity>
         where TEntity : class

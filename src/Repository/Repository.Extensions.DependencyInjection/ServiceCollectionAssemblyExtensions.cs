@@ -1,9 +1,9 @@
-﻿using KG.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using JetBrains.Annotations;
+using UnMango.Extensions.Repository;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -188,6 +188,6 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        private static bool NotLibraryAssembly(Assembly assembly) => !assembly.FullName.Contains(nameof(KG.Data));
+        private static bool NotLibraryAssembly(Assembly assembly) => !assembly.FullName.Contains(nameof(UnMango.Extensions.Repository));
     }
 }

@@ -3,7 +3,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using MongoDB.Driver;
 
-namespace KG.Data.MongoDB
+namespace UnMango.Extensions.Repository.MongoDB
 {
     internal static class Helpers
     {
@@ -12,7 +12,7 @@ namespace KG.Data.MongoDB
             where TEntity : class;
 
         [UsedImplicitly]
-        public static FilterDefinition<TEntity> GetKeyFilter<TEntity>(
+        public static FilterDefinition<TEntity>? GetKeyFilter<TEntity>(
             FilterAggregate<TEntity> aggregateFunction,
             params object[] keyValues)
             where TEntity : class
@@ -22,14 +22,13 @@ namespace KG.Data.MongoDB
 
             var properties = typeof(TEntity).GetProperties();
 
-            IEnumerable<FilterDefinition<TEntity>> filters = keyValues
-                .Select((t, i) => Builders<TEntity>.Filter
+            var filters = keyValues.Select((t, i) => Builders<TEntity>.Filter
                     .Where(x => properties.Any(y => y.GetValue(x) == keyValues[i])));
 
             return aggregateFunction(filters);
         }
 
-        public static FilterDefinition<TEntity> GetAndKeyFilter<TEntity>(params object[] keyValues)
+        public static FilterDefinition<TEntity>? GetAndKeyFilter<TEntity>(params object[] keyValues)
             where TEntity : class
             => GetKeyFilter<TEntity>(Builders<TEntity>.Filter.And, keyValues);
     }

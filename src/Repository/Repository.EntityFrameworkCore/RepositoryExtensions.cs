@@ -2,10 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using KG.Data.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using UnMango.Extensions.Repository.EntityFrameworkCore.Internal;
 
-namespace KG.Data.EntityFrameworkCore
+namespace UnMango.Extensions.Repository.EntityFrameworkCore
 {
     /// <summary>
     ///     Extension methods for common Entity Framework Core operations

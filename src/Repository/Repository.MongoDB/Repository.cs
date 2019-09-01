@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 
-namespace KG.Data.MongoDB
+namespace UnMango.Extensions.Repository.MongoDB
 {
     /// <summary>
     ///     The repository is an implementation of the repository pattern for <typeparamref name="TEntity"/>

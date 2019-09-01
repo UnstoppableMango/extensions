@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 
-namespace KG.Data.EntityFrameworkCore
+namespace UnMango.Extensions.Repository.EntityFrameworkCore
 {
     /// <summary>
     /// Extension methods for <see cref="IUnitOfWork"/>.

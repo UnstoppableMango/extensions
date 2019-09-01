@@ -1,12 +1,12 @@
-﻿using MongoDB.Driver;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using MongoDB.Driver;
 
-namespace KG.Data.MongoDB
+namespace UnMango.Extensions.Repository.MongoDB
 {
     /// <summary>
     ///     Methods to fully take advantage of the features MongoDB has to offer
@@ -23,7 +23,7 @@ namespace KG.Data.MongoDB
         /// <param name="entity"> The <typeparamref name="TEntity"/> to be added. </param>
         /// <param name="options"> MongoDB insert options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
-        public static void Add<TEntity>(this IRepository<TEntity> repository, TEntity entity, InsertOneOptions options = null, CancellationToken cancellationToken = default)
+        public static void Add<TEntity>(this IRepository<TEntity> repository, TEntity entity, InsertOneOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
             => Check(repository).Entities.InsertOne(entity, options, cancellationToken);
 
@@ -36,7 +36,7 @@ namespace KG.Data.MongoDB
         /// <param name="options"> MongoDB insert options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
         /// <returns> A <see cref="Task"/> representing the add operation. </returns>
-        public static Task AddAsync<TEntity>(this IRepository<TEntity> repository, TEntity entity, InsertOneOptions options = null, CancellationToken cancellationToken = default)
+        public static Task AddAsync<TEntity>(this IRepository<TEntity> repository, TEntity entity, InsertOneOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
             => Check(repository).Entities.InsertOneAsync(entity, options, cancellationToken);
 
@@ -48,7 +48,7 @@ namespace KG.Data.MongoDB
         /// <param name="entities"> The <typeparamref name="TEntity"/>s to be added. </param>
         /// <param name="options"> MongoDB insert options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
-        public static void AddRange<TEntity>(this IRepository<TEntity> repository, IEnumerable<TEntity> entities, InsertManyOptions options = null, CancellationToken cancellationToken = default)
+        public static void AddRange<TEntity>(this IRepository<TEntity> repository, IEnumerable<TEntity> entities, InsertManyOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
             => Check(repository).Entities.InsertMany(entities, options, cancellationToken);
 
@@ -61,7 +61,7 @@ namespace KG.Data.MongoDB
         /// <param name="options"> MongoDB insert options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
         /// <returns> A <see cref="Task"/> representing the add operation. </returns>
-        public static Task AddRangeAsync<TEntity>(this IRepository<TEntity> repository, IEnumerable<TEntity> entities, InsertManyOptions options = null, CancellationToken cancellationToken = default)
+        public static Task AddRangeAsync<TEntity>(this IRepository<TEntity> repository, IEnumerable<TEntity> entities, InsertManyOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
             => Check(repository).Entities.InsertManyAsync(entities, options, cancellationToken);
 
@@ -73,7 +73,7 @@ namespace KG.Data.MongoDB
         /// <param name="options"> MongoDB options for a change stream operation. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
         /// <returns> An asynchronous cursor referencing an output document from a $changestream pipeline stage. </returns>
-        public static IAsyncCursor<ChangeStreamDocument<TEntity>> Watch<TEntity>(this IRepository<TEntity> repository, ChangeStreamOptions options = null, CancellationToken cancellationToken = default)
+        public static IAsyncCursor<ChangeStreamDocument<TEntity>> Watch<TEntity>(this IRepository<TEntity> repository, ChangeStreamOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
             => Check(repository).Entities.Watch(options, cancellationToken);
 
@@ -85,7 +85,7 @@ namespace KG.Data.MongoDB
         /// <param name="keyValues"> The keys to match on an entity. </param>
         /// <param name="options"> MongoDB find options. </param>
         /// <returns> The <typeparamref name="TEntity"/> matching the specified key values. </returns>
-        public static TEntity Find<TEntity>(this IRepository<TEntity> repository, object[] keyValues, FindOptions options = null)
+        public static TEntity Find<TEntity>(this IRepository<TEntity> repository, object[] keyValues, FindOptions? options = null)
             where TEntity : class
         {
             var filter = Helpers.GetAndKeyFilter<TEntity>(keyValues);
@@ -102,7 +102,7 @@ namespace KG.Data.MongoDB
         /// <param name="options"> MongoDB find options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
         /// <returns> A <see cref="Task"/> returning the <typeparamref name="TEntity"/> matching the specified key values. </returns>
-        public static async Task<TEntity> FindAsync<TEntity>(this IRepository<TEntity> repository, object[] keyValues, FindOptions<TEntity, TEntity> options = null, CancellationToken cancellationToken = default)
+        public static async Task<TEntity> FindAsync<TEntity>(this IRepository<TEntity> repository, object[] keyValues, FindOptions<TEntity, TEntity>? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
         {
             var filter = Helpers.GetAndKeyFilter<TEntity>(keyValues);
@@ -182,7 +182,7 @@ namespace KG.Data.MongoDB
         /// <param name="updateDefinition"> The definition to determine how entities will be updated. </param>
         /// <param name="options"> MongoDB update options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
-        public static void Update<TEntity>(this IRepository<TEntity> repository, FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions options = null, CancellationToken cancellationToken = default)
+        public static void Update<TEntity>(this IRepository<TEntity> repository, FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
         {
             var result = Check(repository).Entities.UpdateOne(filter, updateDefinition, options, cancellationToken);
@@ -199,7 +199,7 @@ namespace KG.Data.MongoDB
         /// <param name="updateDefinition"> The definition to determine how entities will be updated. </param>
         /// <param name="options"> MongoDB update options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
-        public static void Update<TEntity>(this IRepository<TEntity> repository, Expression<Func<TEntity, bool>> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions options = null, CancellationToken cancellationToken = default)
+        public static void Update<TEntity>(this IRepository<TEntity> repository, Expression<Func<TEntity, bool>> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
         {
             var result = Check(repository).Entities.UpdateOne(filter, updateDefinition, options, cancellationToken);
@@ -217,7 +217,7 @@ namespace KG.Data.MongoDB
         /// <param name="options"> MongoDB update options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
         /// <returns> A <see cref="Task"/> representing the update operation. </returns>
-        public static async Task UpdateAsync<TEntity>(this IRepository<TEntity> repository, FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions options = null, CancellationToken cancellationToken = default)
+        public static async Task UpdateAsync<TEntity>(this IRepository<TEntity> repository, FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
         {
             var result = await Check(repository).Entities.UpdateOneAsync(filter, updateDefinition, options, cancellationToken);
@@ -235,7 +235,7 @@ namespace KG.Data.MongoDB
         /// <param name="options"> MongoDB update options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
         /// <returns> A <see cref="Task"/> representing the update operation. </returns>
-        public static async Task UpdateAsync<TEntity>(this IRepository<TEntity> repository, Expression<Func<TEntity, bool>> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions options = null, CancellationToken cancellationToken = default)
+        public static async Task UpdateAsync<TEntity>(this IRepository<TEntity> repository, Expression<Func<TEntity, bool>> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
         {
             var result = await Check(repository).Entities.UpdateOneAsync(filter, updateDefinition, options, cancellationToken);
@@ -252,7 +252,7 @@ namespace KG.Data.MongoDB
         /// <param name="updateDefinition"> The definition to determine how entities will be updated. </param>
         /// <param name="options"> MongoDB update options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
-        public static void UpdateRange<TEntity>(this IRepository<TEntity> repository, FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions options = null, CancellationToken cancellationToken = default)
+        public static void UpdateRange<TEntity>(this IRepository<TEntity> repository, FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
         {
             var result = Check(repository).Entities.UpdateMany(filter, updateDefinition, options, cancellationToken);
@@ -269,7 +269,7 @@ namespace KG.Data.MongoDB
         /// <param name="updateDefinition"> The definition to determine how entities will be updated. </param>
         /// <param name="options"> MongoDB update options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
-        public static void UpdateRange<TEntity>(this IRepository<TEntity> repository, Expression<Func<TEntity, bool>> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions options = null, CancellationToken cancellationToken = default)
+        public static void UpdateRange<TEntity>(this IRepository<TEntity> repository, Expression<Func<TEntity, bool>> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
         {
             var result = Check(repository).Entities.UpdateMany(filter, updateDefinition, options, cancellationToken);
@@ -287,7 +287,7 @@ namespace KG.Data.MongoDB
         /// <param name="options"> MongoDB update options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
         /// <returns> A <see cref="Task"/> representing the update operation. </returns>
-        public static async Task UpdateRangeAsync<TEntity>(this IRepository<TEntity> repository, FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions options = null, CancellationToken cancellationToken = default)
+        public static async Task UpdateRangeAsync<TEntity>(this IRepository<TEntity> repository, FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
         {
             var result = await Check(repository).Entities.UpdateManyAsync(filter, updateDefinition, options, cancellationToken);
@@ -305,7 +305,7 @@ namespace KG.Data.MongoDB
         /// <param name="options"> MongoDB update options. </param>
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
         /// <returns> A <see cref="Task"/> representing the update operation. </returns>
-        public static async Task UpdateRangeAsync<TEntity>(this IRepository<TEntity> repository, Expression<Func<TEntity, bool>> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions options = null, CancellationToken cancellationToken = default)
+        public static async Task UpdateRangeAsync<TEntity>(this IRepository<TEntity> repository, Expression<Func<TEntity, bool>> filter, UpdateDefinition<TEntity> updateDefinition, UpdateOptions? options = null, CancellationToken cancellationToken = default)
             where TEntity : class
         {
             var result = await Check(repository).Entities.UpdateManyAsync(filter, updateDefinition, options, cancellationToken);

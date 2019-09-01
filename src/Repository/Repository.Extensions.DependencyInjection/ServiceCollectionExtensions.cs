@@ -1,5 +1,5 @@
-﻿using KG.Data;
-using System;
+﻿using System;
+using UnMango.Extensions.Repository;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

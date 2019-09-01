@@ -3,10 +3,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using KG.Data.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore;
+using UnMango.Extensions.Repository.EntityFrameworkCore.Internal;
 
-namespace KG.Data.EntityFrameworkCore
+namespace UnMango.Extensions.Repository.EntityFrameworkCore
 {
     /// <summary>
     /// A helper class for implementing <see cref="IUnitOfWork"/> with <see cref="Microsoft.EntityFrameworkCore"/>.

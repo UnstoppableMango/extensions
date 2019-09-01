@@ -1,6 +1,6 @@
-﻿using JetBrains.Annotations;
-using System;
+﻿using System;
 using System.Diagnostics;
+using JetBrains.Annotations;
 
 namespace UnMango.Extensions.Repository
 {
@@ -23,7 +23,8 @@ namespace UnMango.Extensions.Repository
         [ContractAnnotation("value:null => halt")]
         public static string NotEmpty(string value, [InvokerParameterName] [NotNull] string parameterName)
         {
-            Exception e = null;
+            Exception? e = null;
+
             if (value is null)
             {
                 e = new ArgumentNullException(parameterName);
@@ -33,8 +34,8 @@ namespace UnMango.Extensions.Repository
                 e = new ArgumentException($"{parameterName} is an empty string");
             }
 
-            if (e == null) return value;
-            
+            if (e == null) return value!;
+
             NotEmpty(parameterName, nameof(parameterName));
 
             throw e;
