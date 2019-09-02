@@ -55,16 +55,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Repository\Repository.EntityFramework\Repository.EntityFramework.csproj">
-      <Project>{4004f503-cabb-42b5-8d0d-3747daec0ad7}</Project>
-      <Name>KG.Data.EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\KG.Data\KG.Data.csproj">
-      <Project>{71a05f53-d3f2-4fb2-b69c-3c3c61e5d2be}</Project>
-      <Name>KG.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="EntityFramework">
       <Version>6.2.0</Version>
     </PackageReference>
