@@ -61,7 +61,7 @@ namespace UnMango.Extensions.Repository
         /// <param name="keyValues"> The values of the primary key for the entity to be found. </param>
         /// <returns> A task representing either the entity found, or null. </returns>
         [UsedImplicitly]
-        Task<TEntity> FindAsync([CanBeNull] params object[] keyValues);
+        ValueTask<TEntity> FindAsync([CanBeNull] params object[] keyValues);
 
         /// <summary>
         ///     Finds an entity with the given primary key values. If an entity with the given primary key values
@@ -74,7 +74,7 @@ namespace UnMango.Extensions.Repository
         /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
         /// <returns> A task representing either the entity found, or null. </returns>
         [UsedImplicitly]
-        Task<TEntity> FindAsync([CanBeNull] object[] keyValues, CancellationToken cancellationToken);
+        ValueTask<TEntity> FindAsync([CanBeNull] object[] keyValues, CancellationToken cancellationToken);
 
         /// <summary>
         ///     Begins tracking the given entity, and any other reachable entities that are
@@ -99,7 +99,7 @@ namespace UnMango.Extensions.Repository
         /// <param name="entity"> The entity to add. </param>
         /// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for the task to complete.</param>
         [UsedImplicitly]
-        Task AddAsync([NotNull] TEntity entity, CancellationToken cancellationToken = default);
+        ValueTask AddAsync([NotNull] TEntity entity, CancellationToken cancellationToken = default);
 
         /// <summary>
         ///     Begins tracking the given entity in the "Deleted" state such that it will be removed
@@ -146,7 +146,7 @@ namespace UnMango.Extensions.Repository
         /// <param name="entities"> The entities to add. </param>
         /// <returns> A task that represents the asynchronous operation. </returns>
         [UsedImplicitly]
-        Task AddRangeAsync([NotNull] params TEntity[] entities);
+        ValueTask AddRangeAsync([NotNull] params TEntity[] entities);
 
         /// <summary>
         ///     Begins tracking the given entities in the "Unchanged" state
@@ -212,7 +212,7 @@ namespace UnMango.Extensions.Repository
         /// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for the task to complete.</param>
         /// <returns> A task that represents the asynchronous operation. </returns>
         [UsedImplicitly]
-        Task AddRangeAsync([NotNull] IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
+        ValueTask AddRangeAsync([NotNull] IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
 
         /// <summary>
         ///     Begins tracking the given entities in the "Deleted" state such that they will be removed
