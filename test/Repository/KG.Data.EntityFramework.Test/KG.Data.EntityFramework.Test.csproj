@@ -55,7 +55,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KG.Data.EntityFramework\KG.Data.EntityFramework.csproj">
+    <ProjectReference Include="..\..\..\src\Repository\Repository.EntityFramework\Repository.EntityFramework.csproj">
       <Project>{4004f503-cabb-42b5-8d0d-3747daec0ad7}</Project>
       <Name>KG.Data.EntityFramework</Name>
     </ProjectReference>
