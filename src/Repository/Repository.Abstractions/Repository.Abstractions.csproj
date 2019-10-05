@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>UnMango.Extensions.Repository.Abstractions</AssemblyName>
-    <RootNamespace>UnMango.Extensions.Repository.Abstractions</RootNamespace>
+    <RootNamespace>UnMango.Extensions.Repository</RootNamespace>
   </PropertyGroup>
 
 </Project>

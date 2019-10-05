@@ -68,6 +68,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDB.Test", "test\Reposi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "test\Repository\Repository.Test\Test.csproj", "{548205A5-6B02-46EF-8201-4BE949B9F832}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.CosmosDb", "src\Repository\Repository.CosmosDb\Repository.CosmosDb.csproj", "{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		src\Repository\Utility\Utility.projitems*{2ef8138f-e41f-43ad-b543-3d5d1458e151}*SharedItemsImports = 13
@@ -118,6 +120,10 @@ Global
 		{548205A5-6B02-46EF-8201-4BE949B9F832}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{548205A5-6B02-46EF-8201-4BE949B9F832}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{548205A5-6B02-46EF-8201-4BE949B9F832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +144,7 @@ Global
 		{6EC5EED1-C36F-4292-8A5C-C3B0472A5369} = {21D55F25-A461-40CC-8C5F-A9BA8057E80C}
 		{6C35FD69-786C-43A5-B349-E89AF53D4A22} = {21D55F25-A461-40CC-8C5F-A9BA8057E80C}
 		{548205A5-6B02-46EF-8201-4BE949B9F832} = {21D55F25-A461-40CC-8C5F-A9BA8057E80C}
+		{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3} = {F7F7F551-81B9-43F3-9D7C-B3133ED3A8DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94F81182-81A6-4B23-BB79-926C8623A328}
