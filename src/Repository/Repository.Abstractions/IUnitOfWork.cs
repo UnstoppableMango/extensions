@@ -8,6 +8,6 @@ namespace UnMango.Extensions.Repository
     {
         void SaveChanges();
 
-        Task SaveChangesAsync(CancellationToken cancellationToken = default);
+        ValueTask SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

@@ -6,11 +6,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace UnMango.Extensions.Repository.EntityFrameworkCore
 {
-    public interface IEFRepository<T> : IRepository<T, DbContext>, IQueryable<T>, IEnumerable<T>, IEnumerable, IQueryable, IAsyncEnumerable<T>, IListSource
+    public interface IEFRepository<T> : IEFRepository<T, DbContext>
         where T : class
-    {
-        DbContext Context { get; }
+    { }
 
-        DbSet<T> Set { get; }
+    public interface IEFRepository<TEntity, TContext> :
+        IAsyncRepository<TEntity>,
+        IQueryable<TEntity>,
+        IEnumerable<TEntity>,
+        IEnumerable,
+        IQueryable,
+        IAsyncEnumerable<TEntity>,
+        IListSource
+        where TEntity : class
+        where TContext : DbContext
+    {
+        TContext Context { get; }
+
+        DbSet<TEntity> Set { get; }
     }
 }

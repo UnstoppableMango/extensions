@@ -2,7 +2,10 @@
 
 namespace UnMango.Extensions.Repository
 {
-    public interface IRepository { }
+    public interface IRepository
+    {
+        IUnitOfWork UnitOfWork { get; }
+    }
 
     public interface IRepository<T> : IRepository
     {
@@ -25,10 +28,5 @@ namespace UnMango.Extensions.Repository
         void UpdateRange(params T[] entities) => UpdateRange((IEnumerable<T>)entities);
 
         void UpdateRange(IEnumerable<T> entities);
-    }
-
-    public interface IRepository<TEntity, TProvider> : IRepository<TEntity>
-    {
-        TProvider Provider { get; }
     }
 }
