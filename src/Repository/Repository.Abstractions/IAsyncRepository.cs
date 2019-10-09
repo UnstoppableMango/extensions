@@ -6,7 +6,7 @@ namespace UnMango.Extensions.Repository
 {
     public interface IAsyncRepository : IRepository { }
 
-    public interface IAsyncRepository<T> : IAsyncRepository, IRepository<T>
+    public interface IAsyncRepository<T> : IAsyncRepository
     {
         ValueTask<T> FindAsync(params object[] keyValues);
 

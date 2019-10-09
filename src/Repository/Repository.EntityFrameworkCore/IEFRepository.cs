@@ -11,6 +11,7 @@ namespace UnMango.Extensions.Repository.EntityFrameworkCore
     { }
 
     public interface IEFRepository<TEntity, TContext> :
+        IRepository<TEntity>,
         IAsyncRepository<TEntity>,
         IQueryable<TEntity>,
         IEnumerable<TEntity>,
