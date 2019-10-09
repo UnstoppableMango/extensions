@@ -68,7 +68,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDB.Test", "test\Reposi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "test\Repository\Repository.Test\Test.csproj", "{548205A5-6B02-46EF-8201-4BE949B9F832}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.CosmosDb", "src\Repository\Repository.CosmosDb\Repository.CosmosDb.csproj", "{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.CosmosDb", "src\Repository\Repository.CosmosDb\Repository.CosmosDb.csproj", "{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specification", "Specification", "{C74F9FA8-13A3-4259-9A76-ADDF62D67934}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Specification.Abstractions", "src\Specification\Specification.Abstractions\Specification.Abstractions.csproj", "{0E3D55E0-954C-4043-9783-293282BFF069}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -124,6 +128,10 @@ Global
 		{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E3D55E0-954C-4043-9783-293282BFF069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E3D55E0-954C-4043-9783-293282BFF069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E3D55E0-954C-4043-9783-293282BFF069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E3D55E0-954C-4043-9783-293282BFF069}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,6 +153,8 @@ Global
 		{6C35FD69-786C-43A5-B349-E89AF53D4A22} = {21D55F25-A461-40CC-8C5F-A9BA8057E80C}
 		{548205A5-6B02-46EF-8201-4BE949B9F832} = {21D55F25-A461-40CC-8C5F-A9BA8057E80C}
 		{A5F6ADDA-C5FB-4C5C-9989-663E0B1C59A3} = {F7F7F551-81B9-43F3-9D7C-B3133ED3A8DD}
+		{C74F9FA8-13A3-4259-9A76-ADDF62D67934} = {F8E4892F-C63E-418A-ADF7-BEF32B9C74F4}
+		{0E3D55E0-954C-4043-9783-293282BFF069} = {C74F9FA8-13A3-4259-9A76-ADDF62D67934}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94F81182-81A6-4B23-BB79-926C8623A328}
