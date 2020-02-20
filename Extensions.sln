@@ -38,9 +38,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		NuGet.Config = NuGet.Config
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cqrs.Abstractions", "src\Cqrs.Abstractions\Cqrs.Abstractions.csproj", "{E06E34D5-1031-4375-94F6-89F5ADA249EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cqrs.Abstractions", "src\Cqrs\Cqrs.Abstractions\Cqrs.Abstractions.csproj", "{E06E34D5-1031-4375-94F6-89F5ADA249EA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cqrs", "src\Cqrs\Cqrs.csproj", "{9EC4C0E7-85ED-4DBE-B037-08A8901BFA08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cqrs", "src\Cqrs\Cqrs\Cqrs.csproj", "{9EC4C0E7-85ED-4DBE-B037-08A8901BFA08}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cqrs", "Cqrs", "{31C50500-2DEE-4F11-9719-78B8D94D0F76}"
 EndProject
