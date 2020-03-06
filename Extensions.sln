@@ -44,6 +44,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cqrs", "src\Cqrs\Cqrs\Cqrs.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cqrs", "Cqrs", "{31C50500-2DEE-4F11-9719-78B8D94D0F76}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependabot", "dependabot", "{079FC59C-4872-4109-9859-A22E31E099EC}"
+	ProjectSection(SolutionItems) = preProject
+		.dependabot\config.yml = .dependabot\config.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +71,7 @@ Global
 		{E06E34D5-1031-4375-94F6-89F5ADA249EA} = {31C50500-2DEE-4F11-9719-78B8D94D0F76}
 		{9EC4C0E7-85ED-4DBE-B037-08A8901BFA08} = {31C50500-2DEE-4F11-9719-78B8D94D0F76}
 		{31C50500-2DEE-4F11-9719-78B8D94D0F76} = {F8E4892F-C63E-418A-ADF7-BEF32B9C74F4}
+		{079FC59C-4872-4109-9859-A22E31E099EC} = {C393571D-82B3-4636-9AAE-3954E3FBEC81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94F81182-81A6-4B23-BB79-926C8623A328}
